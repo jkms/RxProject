@@ -33,7 +33,7 @@ function create_customerdb(
   reg_date TIMESTAMP
   )";
 
-  if (mysqli_query($conn, $sql)) {
+  if (mysqli_query($SQL_connection, $sql)) {
       echo "Table MyGuests created successfully";
   } else {
       echo "Error creating table: " . mysqli_error($conn);
