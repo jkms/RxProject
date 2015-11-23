@@ -24,7 +24,7 @@ function create_customerdb(
 
   if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
 
-  // sql to create table
+  # sql to create table
   $sql = "CREATE TABLE CUSTOMERS (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   firstname VARCHAR(30) NOT NULL,
@@ -45,7 +45,7 @@ function create_customerdb(
     }
   } else {
     echo "here are your results: ";
-    echo "$result";
+    echo $result;
   }
 
 
