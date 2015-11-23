@@ -4,7 +4,7 @@
   </head>
   <body>
 
- <? php
+ <?php
   $MyVariable = "Hello World";
   echo $MyVariable;
   echo "A bunch of changes";
