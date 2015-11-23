@@ -6,9 +6,9 @@
 
  <?php
  $SQL_servername = "localhost";
- $SQL_username = "username";
- $SQL_password = "password";
- $SQL_dbname = "myDB";
+ $SQL_username = "RxProject";
+ $SQL_password = "rxpassword";
+ $SQL_dbname = "RxProject";
 function create_customerdb(
   $SQL_servername,
   $SQL_password,
@@ -46,7 +46,7 @@ function create_customerdb(
   $SQL_password,
   $SQL_username,
   $SQL_dbname);
-  
+
   $MyVariable = "Hello World";
   echo $MyVariable;
   echo "A bunch of changes";
