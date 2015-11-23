@@ -34,7 +34,7 @@ function create_customerdb(
   )";
 
   $query = "SELECT * FROM CUSTOMERS";
-  $result = mysqli_query($SQL_connection, $query);
+  $query_result = mysqli_query($SQL_connection, $query);
 
   if (empty($result)) {
     echo "DB Does not exist. Attempting Creation.";
@@ -45,10 +45,8 @@ function create_customerdb(
     }
   } else {
     echo "here are your results: ";
-    echo $result;
+    echo $query_result;
   }
-
-
 
   mysqli_close($SQL_connection);
 }
