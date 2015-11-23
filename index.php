@@ -33,7 +33,7 @@ function create_customerdb(
   reg_date TIMESTAMP
   )";
 
-  $query = "SELECT * FROM CUSTOMERS"
+  $query = "SELECT * FROM CUSTOMERS";
   $result = mysqli_query($SQL_connection, $query);
 
   if (empty($result)) {
