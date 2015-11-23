@@ -36,10 +36,10 @@ function create_customerdb(
   if (mysqli_query($SQL_connection, $sql)) {
       echo "Table MyGuests created successfully";
   } else {
-      echo "Error creating table: " . mysqli_error($conn);
+      echo "Error creating table: " . mysqli_error($SQL_connection);
   }
 
-  mysqli_close($conn);
+  mysqli_close($SQL_connection);
 }
 
   create_customerdb($SQL_servername,
