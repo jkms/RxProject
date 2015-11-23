@@ -11,14 +11,14 @@
  $SQL_dbname = "RxProject";
 function create_customerdb(
   $SQL_servername,
-  $SQL_password,
   $SQL_username,
+  $SQL_password,
   $SQL_dbname)
 {
   $SQL_connection = mysqli_connect(
     $SQL_servername,
-    $SQL_password,
     $SQL_username,
+    $SQL_password,
     $SQL_dbname
   );
 
@@ -42,10 +42,12 @@ function create_customerdb(
   mysqli_close($SQL_connection);
 }
 
-  create_customerdb($SQL_servername,
-  $SQL_password,
-  $SQL_username,
-  $SQL_dbname);
+  create_customerdb(
+    $SQL_servername,
+    $SQL_username,
+    $SQL_password,
+    $SQL_dbname
+  );
 
   $MyVariable = "Hello World";
   echo $MyVariable;
