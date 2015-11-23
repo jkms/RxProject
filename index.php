@@ -44,7 +44,7 @@ function create_customerdb(
         echo "Error creating table: " . mysqli_error($SQL_connection);
     }
   } else {
-    echo "here are your results: ";
+    echo "here are your results: \n";
     echo $query_result;
   }
 
@@ -60,7 +60,6 @@ function create_customerdb(
 
   $MyVariable = "Hello World";
   echo $MyVariable;
-  echo "A bunch of changes";
  ?>
 
  </BODY>
