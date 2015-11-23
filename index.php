@@ -45,7 +45,7 @@ function create_customerdb(
     }
   } else {
     echo "here are your results: \n";
-    echo $query_result;
+    print_r($query_result);
   }
 
   mysqli_close($SQL_connection);
