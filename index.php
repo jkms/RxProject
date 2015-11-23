@@ -36,7 +36,7 @@ function create_customerdb(
   $query = "SELECT * FROM CUSTOMERS";
   $query_result = mysqli_query($SQL_connection, $query);
 
-  if (empty($result)) {
+  if (empty($query_result)) {
     echo "DB Does not exist. Attempting Creation.";
     if (mysqli_query($SQL_connection, $sql)) {
         echo "Table MyGuests created successfully";
