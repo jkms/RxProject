@@ -22,7 +22,7 @@ function create_customerdb(
     $SQL_dbname
   );
 
-  if ($SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
+  if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
 
   // sql to create table
   $sql = "CREATE TABLE MyGuests (
