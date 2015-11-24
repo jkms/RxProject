@@ -34,4 +34,24 @@ function create_customerdb($SQL_connection)
   mysqli_close($SQL_connection);
 }
 
+function reset_db($SQL_connection)
+{
+  if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
+
+  $query = "SHOW TABLES";
+  $result = mysqli_query($SQL_connection, $query);
+
+  if (empty($result)) { # Check if the table exists
+    echo "There are no databases";
+  } else {
+    echo "here are your results:<br>\n";
+    while($row=mysqli_fetch_assoc($result)) {
+      echo "<a href=\"mailto:" .$row["email"] . "\">" . $row["lastname"] .
+      ", " . $row["firstname"] . "</a><br>\n";
+    }
+  }
+
+  mysqli_close($SQL_connection);
+}
+
 ?>
