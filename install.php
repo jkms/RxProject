@@ -22,7 +22,6 @@ function create_customerdb($SQL_connection)
         echo "Table \"$TableName\" created successfully<br>\n";
         //Import some junk
         $handle = fopen('./junkdata/randomnames.csv', "r");
-
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
             $import="INSERT into $TableName(firstname,lastname,email)values('$data[0]','$data[1]','$data[3]')";
             echo $import . "<br>\n";
@@ -34,12 +33,6 @@ function create_customerdb($SQL_connection)
     }
   } else {
     echo "Table \"$TableName\" already exists<br>\n";
-/*
-    while($row=mysqli_fetch_assoc($result)) {
-      echo "<a href=\"mailto:" .$row["email"] . "\">" . $row["lastname"] .
-      ", " . $row["firstname"] . "</a><br>\n";
-    }
-*/
   }
 
   mysqli_close($SQL_connection);
@@ -79,11 +72,6 @@ function create_drugdb($SQL_connection)
     }
   } else {
     echo "Table \"$TableName\" already exists<br>\n";
-/*
-    while($row=mysqli_fetch_assoc($result)) {
-      echo $row["drugname"] . "<br>\n";
-    }
-*/
   }
 
   mysqli_close($SQL_connection);
