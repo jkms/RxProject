@@ -20,6 +20,16 @@ function create_customerdb($SQL_connection)
     echo "Table \"$TableName\" Does not exist. Attempting Creation.<br>\n";
     if (mysqli_query($SQL_connection, $sql)) { # Create the table
         echo "Table \"$TableName\" created successfully<br>\n";
+        //Import some junk
+        $randomnames = fopen('./randomnames.csv', "r");
+
+        while (($data = fgetcsv($randomnames, 1000, ",")) !== FALSE) {
+            $import="INSERT into $TableName(firstname,lastname,email)values('$data[0]','$data[1]','$data[3]')";
+            echo $import . "<br>\n";
+            echo $data[0] . ", " . $data[1] . ", " . $data[3] . "<br>\n";
+            mysqli_query($SQL_connection, $import) or die(mysql_error());
+        }
+        fclose($randomnames);
     } else {
         echo "Error creating table: " . mysqli_error($SQL_connection); # Error
     }
