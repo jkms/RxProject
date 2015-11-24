@@ -1,6 +1,5 @@
 <?php
 $title = "RxProject";
-
 include 'install.php';
 ?>
 
@@ -27,10 +26,9 @@ if ($_GET["function"] == "install") {
    $MyVariable = "I have nothing to do. Maybe
    <a href=\"index.php?function=install\">Install</a>";
    echo $MyVariable;
-#   echo $nothing;
  }
 
  ?>
 
- </body>
+</body>
 </html>
