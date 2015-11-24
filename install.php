@@ -1,18 +1,7 @@
 <?php
 
-function create_customerdb(
-  $SQL_servername,
-  $SQL_username,
-  $SQL_password,
-  $SQL_dbname)
+function create_customerdb($SQL_connection)
 {
-  $SQL_connection = mysqli_connect(
-    $SQL_servername,
-    $SQL_username,
-    $SQL_password,
-    $SQL_dbname
-  );
-
   if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
 
   # sql to create table
