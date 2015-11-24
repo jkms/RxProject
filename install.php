@@ -2,7 +2,6 @@
 
 function create_customerdb($SQL_connection)
 {
-  if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
   $TableName = "Customers";
   # sql to create table
   $sql = "CREATE TABLE $TableName (
@@ -34,13 +33,10 @@ function create_customerdb($SQL_connection)
   } else {
     echo "Table \"$TableName\" already exists<br>\n";
   }
-
-  mysqli_close($SQL_connection);
 }
 
 function create_drugdb($SQL_connection)
 {
-  if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
   $TableName = "Drugs";
   # sql to create table
   $sql = "CREATE TABLE $TableName (
@@ -73,13 +69,10 @@ function create_drugdb($SQL_connection)
   } else {
     echo "Table \"$TableName\" already exists<br>\n";
   }
-
-  mysqli_close($SQL_connection);
 }
 
 function reset_db($SQL_connection)
 {
-  if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
   $SQL_connection->query('SET foreign_key_checks = 0');
   if ($result = $SQL_connection->query("SHOW TABLES"))
   {
@@ -90,7 +83,6 @@ function reset_db($SQL_connection)
     }
   }
   $SQL_connection->query('SET foreign_key_checks = 1');
-  mysqli_close($SQL_connection);
 }
 
 ?>
