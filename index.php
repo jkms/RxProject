@@ -1,66 +1,36 @@
+<?php
+$title = "RxProject";
+
+include 'install.php';
+?>
+
 <html>
-  <head>
-    <title>RxProject</title>
-  </head>
-  <body>
+<head>
+<title><?php echo $title; ?></title>
+</head>
+<body>
 
  <?php
  $SQL_servername = "localhost";
  $SQL_username = "RxProject";
  $SQL_password = "rxpassword";
  $SQL_dbname = "RxProject";
-function create_customerdb(
-  $SQL_servername,
-  $SQL_username,
-  $SQL_password,
-  $SQL_dbname)
-{
-  $SQL_connection = mysqli_connect(
-    $SQL_servername,
-    $SQL_username,
-    $SQL_password,
-    $SQL_dbname
-  );
 
-  if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
-
-  # sql to create table
-  $sql = "CREATE TABLE CUSTOMERS (
-  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  firstname VARCHAR(30) NOT NULL,
-  lastname VARCHAR(30) NOT NULL,
-  email VARCHAR(50),
-  reg_date TIMESTAMP
-  )";
-
-  $query = "SELECT * FROM CUSTOMERS";
-  $query_result = mysqli_query($SQL_connection, $query);
-
-  if (empty($query_result)) {
-    echo "DB Does not exist. Attempting Creation.";
-    if (mysqli_query($SQL_connection, $sql)) {
-        echo "Table MyGuests created successfully";
-    } else {
-        echo "Error creating table: " . mysqli_error($SQL_connection);
-    }
+if ($_GET["function"] == "install") {
+   create_customerdb(
+     $SQL_servername,
+     $SQL_username,
+     $SQL_password,
+     $SQL_dbname
+   );
   } else {
-    echo "here are your results: \n";
-    print_r($query_result);
-  }
+   $MyVariable = "I have nothing to do. Maybe
+   <a href=\"index.php?function=install\">Install</a>";
+   echo $MyVariable;
+#   echo $nothing;
+ }
 
-  mysqli_close($SQL_connection);
-}
-
-  create_customerdb(
-    $SQL_servername,
-    $SQL_username,
-    $SQL_password,
-    $SQL_dbname
-  );
-
-  $MyVariable = "Hello World";
-  echo $MyVariable;
  ?>
 
- </BODY>
+ </body>
 </html>
