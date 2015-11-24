@@ -1,6 +1,6 @@
 <?php
 $footer="developed by John Stafford";
-echo "<br>\n$footer
+echo "<footer>$footer</footer>
 </body>
 </html>";
 ?>
