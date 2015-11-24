@@ -16,12 +16,12 @@ function create_customerdb($SQL_connection)
   $query = "SELECT * FROM CUSTOMERS";
   $result = mysqli_query($SQL_connection, $query);
 
-  if (empty($result)) {
+  if (empty($result)) { # Check if the table exists
     echo "DB Does not exist. Attempting Creation.";
-    if (mysqli_query($SQL_connection, $sql)) {
+    if (mysqli_query($SQL_connection, $sql)) { # Create the table
         echo "Table MyGuests created successfully";
     } else {
-        echo "Error creating table: " . mysqli_error($SQL_connection);
+        echo "Error creating table: " . mysqli_error($SQL_connection); # Error
     }
   } else {
     echo "here are your results:<br>\n";
