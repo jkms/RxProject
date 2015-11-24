@@ -3,9 +3,9 @@
 function create_customerdb($SQL_connection)
 {
   if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
-
+  $TableName = "Customers";
   # sql to create table
-  $sql = "CREATE TABLE CUSTOMERS (
+  $sql = "CREATE TABLE $TableName (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   firstname VARCHAR(30) NOT NULL,
   lastname VARCHAR(30) NOT NULL,
@@ -13,13 +13,13 @@ function create_customerdb($SQL_connection)
   reg_date TIMESTAMP
   )";
 
-  $query = "SELECT * FROM CUSTOMERS";
+  $query = "SELECT * FROM $TableName";
   $result = mysqli_query($SQL_connection, $query);
 
   if (empty($result)) { # Check if the table exists
-    echo "DB Does not exist. Attempting Creation.";
+    echo "Table \"$TableName\" Does not exist. Attempting Creation.<br>\n";
     if (mysqli_query($SQL_connection, $sql)) { # Create the table
-        echo "Table MyGuests created successfully";
+        echo "Table \"$TableName\" created successfully<br>\n";
     } else {
         echo "Error creating table: " . mysqli_error($SQL_connection); # Error
     }
@@ -37,20 +37,16 @@ function create_customerdb($SQL_connection)
 function reset_db($SQL_connection)
 {
   if (!$SQL_connection) {die("Connection failed: " . mysqli_connect_error());}
-
-  $query = "SHOW TABLES";
-  $result = mysqli_query($SQL_connection, $query);
-
-  if (empty($result)) { # Check if the table exists
-    echo "There are no databases";
-  } else {
-    echo "here are your results:<br>\n";
-    while($row=mysqli_fetch_assoc($result)) {
-      echo "<a href=\"mailto:" .$row["email"] . "\">" . $row["lastname"] .
-      ", " . $row["firstname"] . "</a><br>\n";
+  $SQL_connection->query('SET foreign_key_checks = 0');
+  if ($result = $SQL_connection->query("SHOW TABLES"))
+  {
+    while($row = $result->fetch_array(MYSQLI_NUM))
+    {
+      echo "dropping \"".$row[0]."\"<br>\n";
+      $SQL_connection->query('DROP TABLE IF EXISTS '.$row[0]);
     }
   }
-
+  $SQL_connection->query('SET foreign_key_checks = 1');
   mysqli_close($SQL_connection);
 }
 
